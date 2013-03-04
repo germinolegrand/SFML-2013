@@ -27,6 +27,11 @@ set(VERSION_PATCH 0)
 # add the SFML header path
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
+# add C++11 support
+if(NOT COMPILER_MSVC)
+	set(CMAKE_CXX_FLAGS -std=c++11)
+endif()
+
 # add an option for choosing the build type (shared or static)
 sfml_set_option(BUILD_SHARED_LIBS TRUE BOOL "TRUE to build SFML as shared libraries, FALSE to build it as static libraries")
 
