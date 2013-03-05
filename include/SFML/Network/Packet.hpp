@@ -252,6 +252,12 @@ protected:
     ////////////////////////////////////////////////////////////
     virtual void onReceive(const void* data, std::size_t size);
 
+    ///Modified by germinolegrand
+    inline void advanceReadPos(std::size_t size);
+    inline void* getRawData();
+    inline const void* getRawData() const;
+    inline std::size_t getReadPos();
+
 private :
 
     ////////////////////////////////////////////////////////////
@@ -280,6 +286,28 @@ private :
     std::size_t       m_readPos; ///< Current reading position in the packet
     bool              m_isValid; ///< Reading state of the packet
 };
+
+///Modified by germinolegrand
+inline void Packet::advanceReadPos(std::size_t size)
+{
+    if(checkSize(size))
+        m_readPos += size;
+}
+
+inline void* Packet::getRawData()
+{
+    return m_data.data();
+}
+
+inline const void* Packet::getRawData() const
+{
+    return m_data.data();
+}
+
+inline std::size_t Packet::getReadPos()
+{
+    return m_readPos;
+}
 
 } // namespace sf
 

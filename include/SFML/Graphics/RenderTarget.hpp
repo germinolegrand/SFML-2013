@@ -415,6 +415,8 @@ private:
     ////////////////////////////////////////////////////////////
     View        m_defaultView; ///< Default view
     View        m_view;        ///< Current view
+
+protected: //! EODE ajout de protected pour le renderWindow perso
     StatesCache m_cache;       ///< Render states cache
 };
 
