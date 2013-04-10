@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////
 //
 // SFML - Simple and Fast Multimedia Library
-// Copyright (C) 2007-2012 Laurent Gomila (laurent.gom@gmail.com)
+// Copyright (C) 2007-2013 Laurent Gomila (laurent.gom@gmail.com)
 //
 // This software is provided 'as-is', without any express or implied warranty.
 // In no event will the authors be held liable for any damages arising from the use of this software.
@@ -817,18 +817,24 @@ bool WindowImplX11::processEvent(XEvent windowEvent)
         // Mouse entered
         case EnterNotify :
         {
-            Event event;
-            event.type = Event::MouseEntered;
-            pushEvent(event);
+            if (windowEvent.xcrossing.mode == NotifyNormal)
+            {
+                Event event;
+                event.type = Event::MouseEntered;
+                pushEvent(event);
+            }
             break;
         }
 
         // Mouse left
         case LeaveNotify :
         {
-            Event event;
-            event.type = Event::MouseLeft;
-            pushEvent(event);
+            if (windowEvent.xcrossing.mode == NotifyNormal)
+            {
+                Event event;
+                event.type = Event::MouseLeft;
+                pushEvent(event);
+            }
             break;
         }
     }
