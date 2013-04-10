@@ -68,7 +68,7 @@ void alCheckError(const std::string& file, unsigned int line);
 /// Make sure that OpenAL is initialized
 ///
 ////////////////////////////////////////////////////////////
-void ensureALInit();
+inline void ensureALInit(){};
 
 } // namespace priv
 

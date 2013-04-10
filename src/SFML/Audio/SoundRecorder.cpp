@@ -123,8 +123,8 @@ unsigned int SoundRecorder::getSampleRate() const
 ////////////////////////////////////////////////////////////
 bool SoundRecorder::isAvailable()
 {
-    return (priv::AudioDevice::isExtensionSupported("ALC_EXT_CAPTURE") != AL_FALSE) ||
-           (priv::AudioDevice::isExtensionSupported("ALC_EXT_capture") != AL_FALSE); // "bug" in Mac OS X 10.5 and 10.6
+    return (AudioDevice::isExtensionSupported("ALC_EXT_CAPTURE") != AL_FALSE) ||
+           (AudioDevice::isExtensionSupported("ALC_EXT_capture") != AL_FALSE); // "bug" in Mac OS X 10.5 and 10.6
 }
 
 

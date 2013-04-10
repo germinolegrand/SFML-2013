@@ -31,15 +31,13 @@
 #include <SFML/System/Err.hpp>
 
 
-namespace 
+namespace
 {
     ALCdevice*  audioDevice  = NULL;
     ALCcontext* audioContext = NULL;
 }
 
 namespace sf
-{
-namespace priv
 {
 ////////////////////////////////////////////////////////////
 AudioDevice::AudioDevice()
@@ -86,7 +84,7 @@ AudioDevice::~AudioDevice()
 ////////////////////////////////////////////////////////////
 bool AudioDevice::isExtensionSupported(const std::string& extension)
 {
-    ensureALInit();
+    priv::ensureALInit();
 
     if ((extension.length() > 2) && (extension.substr(0, 3) == "ALC"))
         return alcIsExtensionPresent(audioDevice, extension.c_str()) != AL_FALSE;
@@ -98,7 +96,7 @@ bool AudioDevice::isExtensionSupported(const std::string& extension)
 ////////////////////////////////////////////////////////////
 int AudioDevice::getFormatFromChannelCount(unsigned int channelCount)
 {
-    ensureALInit();
+    priv::ensureALInit();
 
     // Find the good format according to the number of channels
     switch (channelCount)
@@ -112,7 +110,5 @@ int AudioDevice::getFormatFromChannelCount(unsigned int channelCount)
         default : return 0;
     }
 }
-
-} // namespace priv
 
 } // namespace sf

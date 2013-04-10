@@ -239,7 +239,7 @@ bool SoundBuffer::update(unsigned int channelCount, unsigned int sampleRate)
         return false;
 
     // Find the good format according to the number of channels
-    ALenum format = priv::AudioDevice::getFormatFromChannelCount(channelCount);
+    ALenum format = AudioDevice::getFormatFromChannelCount(channelCount);
 
     // Check if the format is valid
     if (format == 0)

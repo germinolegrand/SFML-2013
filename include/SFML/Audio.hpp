@@ -30,6 +30,7 @@
 ////////////////////////////////////////////////////////////
 
 #include <SFML/System.hpp>
+#include <SFML/Audio/AudioDevice.hpp>
 #include <SFML/Audio/Listener.hpp>
 #include <SFML/Audio/Music.hpp>
 #include <SFML/Audio/Sound.hpp>
@@ -46,5 +47,5 @@
 ///
 /// Sounds, streaming (musics or custom sources), recording,
 /// spatialization.
-/// 
+///
 ////////////////////////////////////////////////////////////

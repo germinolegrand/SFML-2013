@@ -7,7 +7,7 @@ set(SRC
     ${SRCROOT}/ALCheck.cpp
     ${SRCROOT}/ALCheck.hpp
     ${SRCROOT}/AudioDevice.cpp
-    ${SRCROOT}/AudioDevice.hpp
+    ${INCROOT}/AudioDevice.hpp
     ${INCROOT}/Export.hpp
     ${SRCROOT}/Listener.cpp
     ${INCROOT}/Listener.hpp

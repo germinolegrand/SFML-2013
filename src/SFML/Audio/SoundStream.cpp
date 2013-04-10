@@ -67,7 +67,7 @@ void SoundStream::initialize(unsigned int channelCount, unsigned int sampleRate)
     m_sampleRate   = sampleRate;
 
     // Deduce the format from the number of channels
-    m_format = priv::AudioDevice::getFormatFromChannelCount(channelCount);
+    m_format = AudioDevice::getFormatFromChannelCount(channelCount);
 
     // Check if the format is valid
     if (m_format == 0)
