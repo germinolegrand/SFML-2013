@@ -175,6 +175,8 @@ public:
     /// Overloads of operator >> to read data from the packet
     ///
     ////////////////////////////////////////////////////////////
+    template <class EnumT> inline
+    Packet& operator >>(EnumT&        data);
     Packet& operator >>(bool&         data);
     Packet& operator >>(Int8&         data);
     Packet& operator >>(Uint8&        data);
@@ -194,6 +196,8 @@ public:
     /// Overloads of operator << to write data into the packet
     ///
     ////////////////////////////////////////////////////////////
+    template <class EnumT> inline
+    Packet& operator <<(EnumT               data);
     Packet& operator <<(bool                data);
     Packet& operator <<(Int8                data);
     Packet& operator <<(Uint8               data);
@@ -315,6 +319,22 @@ inline void Packet::overwrite(size_t writePos, size_t begin)
 {
     memmove(m_data.data() + writePos, m_data.data() + begin, m_data.size() - begin);
     m_data.resize(begin);
+}
+
+template <class EnumT> inline
+sf::Packet& sf::Packet::operator>>(EnumT& en)
+{
+    typename std::underlying_type<EnumT>::type en_t(0);
+    *this >> en_t;
+    en = static_cast<EnumT>(en_t);
+    return *this;
+}
+
+template <class EnumT> inline
+sf::Packet& sf::Packet::operator<<(EnumT en)
+{
+    *this << static_cast<typename std::underlying_type<EnumT>::type>(en);
+    return *this;
 }
 
 } // namespace sf
