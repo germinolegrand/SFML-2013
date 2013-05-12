@@ -30,6 +30,7 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Network/Export.hpp>
 #include <string>
+#include <cstring>
 #include <vector>
 
 
@@ -257,6 +258,7 @@ protected:
     inline void* getRawData();
     inline const void* getRawData() const;
     inline std::size_t getReadPos();
+    inline void overwrite(size_t writePos, size_t begin);
 
 private :
 
@@ -307,6 +309,12 @@ inline const void* Packet::getRawData() const
 inline std::size_t Packet::getReadPos()
 {
     return m_readPos;
+}
+
+inline void Packet::overwrite(size_t writePos, size_t begin)
+{
+    memmove(m_data.data() + writePos, m_data.data() + begin, m_data.size() - begin);
+    m_data.resize(begin);
 }
 
 } // namespace sf
